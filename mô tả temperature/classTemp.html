@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Temp = function(doC){
+            this.doC = doC;
+        // Độ C sang độ F
+            this.doCTodoF = function(){
+                let doF = doC*1.8 + 32;
+                return doF;
+            }
+        // Độ C sang độ Kenvin
+            this.doCTodoK = function(){
+                let doK = doC + 273.15;
+                return doK;
+            }
+        }
+        let temp1 = new Temp(25);
+        let F1 = temp1.doCTodoF();
+        let K1 = temp1.doCTodoK();
+        document.write(`Độ F là ${F1} và độ Kenvin là ${K1}`);
+    </script>
+</body>
+</html>
