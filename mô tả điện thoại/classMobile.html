@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Mobile = function(pin){
+            this.outbox = [];
+            this.inbox = [];
+            // Kiểm tra điện thoại bật hay tắt
+            this.checkScreen = function(){
+                if (this.status){
+                    alert('Điện thoại đang bật');
+                } else alert('Điện thoại đang tắt');
+            }
+
+            // Bật và tắt điện thoại
+            this.turnOn = function(){
+                this.status = true;
+            }
+            this.turnOff = function(){
+                this.status = false;
+            }
+
+            this.pin = pin;
+            // Sạc pin điện thoại
+            this.chargePin = function(){
+                while (pin<100){
+                    alert(`Lượng pin hiện tại là ${pin}`);
+                    pin++;
+                }
+            }
+
+            // Tiêu hao pin
+            this.decreasePin = function(){
+                if (pin>0){
+                    pin--;
+                }
+            }
+
+            // Soạn tin nhắn
+            this.write = function(){
+                if(this.status){
+                    let draft = prompt('Nhập nội dung tin nhắn:');
+                    this.outbbox.push(draft);       
+                    this.decreasePin();
+                }
+            }
+
+            // Xem tin nhắn đã gửi
+            this.displaySent = function(){
+                if (this.status){
+                    document.write(`Danh sách tin nhắn đã gửi: ${this.outbox}`);
+                    this.decreasePin();
+                }
+            }
+
+            // Xem tin nhắn trong hộp thư đến
+            this.displayInbox = function(){
+                if (this.status){
+                    document.write(this.inbox);
+                    this.decreasePin();
+                }
+            }
+        }
+        let mobi1 = new Mobile(30);
+        mobi1.turnOn();
+        mobi1.write();        
+        mobi1.write();
+        mobi1.displaySent();
+        mobi1.chargePin();
+    </script>
+</body>
+</html>

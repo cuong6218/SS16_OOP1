@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Mobile {
+            constructor(name){
+                this.name = name;
+                this.msg = "";
+                this.outbox = [];
+                this.inbox = [];
+                this.battery = 100;
+            }
+            
+
+            // Soạn tin nhắn
+            writeMSG(msg){
+                this.msg = msg;
+            }
+            // Gửi tin nhắn
+            sendMSG(Mobile){
+                if (this.battery<=0) return;
+                this.outbox.push(this.msg);
+                Mobile.receiveMSG(this.msg);
+                this.battery -=10;
+            }
+
+            // Nhận tin nhắn
+            receiveMSG(msg){
+                this.inbox.push(msg);
+            }
+
+            displayBattery(){
+                console.log(this.battery);
+            }
+        }
+        let mobi1 = new Mobile("mobi1");
+        let mobi2 = new Mobile("mobi2");
+        console.log(mobi1);
+        console.log(mobi2);
+        mobi1.writeMSG("Hello");
+        mobi1.sendMSG(mobi2);
+        mobi1.displayBattery();
+
+    </script>
+</body>
+</html>
