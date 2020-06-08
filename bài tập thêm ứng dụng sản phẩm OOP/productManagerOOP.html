@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Add New Product</h1>
+    <input type="text" id="name" placeholder="Name of product" />
+    <input type="text" id="color" placeholder="Color" />
+    <input type="text" id="price" placeholder="Price" />
+    <input type="text" id="description" placeholder="Description" />
+    <button onclick="add()">Add</button></br>
+    <h2>Display All Product</h2>
+    <table id="display" style="border: 1px solid black"></table>
+    <script>
+        let Product = function(name, color, price, desc){
+            this.name = name;
+            this.color = color;
+            this.price = price;
+            this.desc = desc;
+            let i = 0;
+            this.display = function() {
+                let str = "";
+                        str += `<tr></tr><td>${name}</td>`;
+                        str += `<td>${color}</td>`;
+                        str += `<td>${price}</td>`;
+                        str += `<td>${desc}</td>`;
+                        str += `<td><button onclick="del()">Delete</button></td>
+                            <td><button onclick="">Edit</button></td></tr>`;
+            document.getElementById('display').innerHTML = str;
+            }
+            
+        }
+    
+    //Danh sách sản phẩm
+    let product1 = new Product("Nokia", "Đỏ", 1000, "Đẹp");
+    let product2 = new Product("Samsung", "Cam", 2000, "Xấu");
+    let product3 = new Product("Xiaomi", "Vàng", 3000, "DỞ");
+    let product4 = new Product("VSmart", "Xanh", 4000, "Tốt");
+    let product5 = new Product("IPhone", "Nâu", 500, "Mới");
+        let list = [{product1},
+        {product2},
+        {product3},
+        {product4},
+        {product5}
+        ];
+        function displayMulti(){
+            let str = "";
+        str += `<tr><th>Product Name</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                    <th>Description</th></tr>`;
+        for (let i = 0; i < list.length; i++) {
+            str += product1.display();
+        }
+        document.getElementById('display').innerHTML = str;
+        }
+
+    displayMulti();
+    </script>
+</body>
+</html>

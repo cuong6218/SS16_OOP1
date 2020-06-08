@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<canvas id="field" width="500px" height="500px"></canvas>
+<body>
+    <script>
+        let Rectangle = function(dai, rong){
+            this.dai = dai;
+            this.rong = rong;
+
+            this.dientich = function(){
+                let dientich = dai*rong;
+                return dientich;
+            }
+            this.chuvi = function(){
+                let chuvi = (dai+rong)*2;
+                return chuvi;
+            }
+
+            this.draw = function(){
+                let hcn = document.getElementById('field');
+                let pen = hcn.getContext("2d");
+                pen.beginPath();
+                pen.rect(30,30, dai, rong);
+                pen.stroke();
+            }
+        }
+
+        let rect1 = new Rectangle(150,100);
+        rect1.draw();
+        let dientich = rect1.dientich();
+        let chuvi = rect1.chuvi();
+        alert(`Diện tích hình chữ nhật là ${dientich} và chu vi hình chữ nhật là ${chuvi}`);
+    </script>
+</body>
+</html>
